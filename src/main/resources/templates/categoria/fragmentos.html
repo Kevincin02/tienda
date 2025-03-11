@@ -89,7 +89,10 @@
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
                                                    class="btn btn-success">
-                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
+                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a>
+                                                <a th:href="@{/categoria/informacion/}+${categoria.idCategoria}"
+                                                   class="btn btn-warning">
+                                                    <i class="fas fa-file"></i> [[#{accion.informacion}]]</a></td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -110,7 +113,75 @@
             </div>
         </section>
 
-        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <!-- 4.1 Fragmento que se utiliza en la página informacion.html -->
+        <section th:fragment="informacionCategoria">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/categoria/informacion}" 
+                          th:object="${categoria}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+                        <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                        <section>
+                            <div class="container py-4 mb-4 bg-light">
+                                <div class="row">
+                                    <div class="col-md-4 d-grid">
+                                        <a th:href="@{/categoria/listado}" class="btn btn-primary">
+                                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>[[#{accion.informacion}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label>[[#{categoria.descripcion}]]:</label>
+                                                    <p th:text="${categoria.descripcion}"></p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label>[[#{categoria.caracteristicas}]]:</label>
+                                                    <ul>
+                                                        <li>Mayor capacidad de respuesta</li>
+                                                        <li>Radiante iluminación RGB</li>
+                                                        <li>Más de 300 perfiles de iluminación integrados</li>
+                                                        <li>Diseño compacto y duradero</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label>[[#{categoria.marca}]]:</label>
+                                                    <ul>
+                                                        <li>Logitech</li>
+                                                        <li>Razer</li>
+                                                        <li>Corsair</li>
+                                                        <li>Newskill</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-12 d-flex align-items-center">
+                                                    <img th:src="@{${categoria.rutaImagen}}" alt="Imagen de la categoría" height="220"/>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4.2 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarCategoria">
             <div class="row">
                 <div class="col-md-2"></div>

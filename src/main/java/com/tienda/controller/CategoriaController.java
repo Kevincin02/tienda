@@ -59,4 +59,11 @@ public class CategoriaController {
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
     }
+    
+    @GetMapping("/informacion/{idCategoria}")
+    public String categoriaInformacion(Categoria categoria, Model model) {
+        categoria = categoriaService.getCategoria(categoria);
+        model.addAttribute("categoria", categoria);
+        return "/categoria/informacion";
+    }
 }
