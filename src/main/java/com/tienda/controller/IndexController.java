@@ -1,4 +1,4 @@
-package com.tienda.controler;
+package com.tienda.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +17,4 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/informacion")
-    public String contacto(Model model) {
-        return "contacto";
-    }
 }
