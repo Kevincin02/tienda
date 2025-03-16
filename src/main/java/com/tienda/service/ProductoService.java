@@ -22,8 +22,9 @@ public interface ProductoService {
     public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup);
     
     // Lista de productos con existencias entre ordenados por descripcion 
-    public List<Producto> findByExistenciasBetweenOrderByDescripcionDesc(int minExistencias, int maxExistencias);
-
+    public List<Producto> findByExistenciasLessThanEqualOrderByDescripcionDesc(int maxExistencias);
+    
+    public List<Producto> findByDescripcionStartingWithIgnoreCaseOrderByDescripcionDesc(String descripcion);
 
     //Lista de productos utilizando consultas con JPQL    
     public List<Producto> metodoJPQL(double precioInf, double precioSup);

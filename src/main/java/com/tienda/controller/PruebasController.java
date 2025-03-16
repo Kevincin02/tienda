@@ -92,13 +92,19 @@ public class PruebasController {
     }
 
     @PostMapping("/query4")
-    public String consultaQuery4(@RequestParam(value = "minExistencias") int minExistencias,
-            @RequestParam(value = "maxExistencias") int maxExistencias, Model model) {
-        var productos = productoService.findByExistenciasBetweenOrderByDescripcionDesc(minExistencias, maxExistencias);
+    public String consultaQuery4(@RequestParam(value = "maxExistencias") int maxExistencias, Model model) {
+        var productos = productoService.findByExistenciasLessThanEqualOrderByDescripcionDesc(maxExistencias);
         model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
-        model.addAttribute("minExistencias", minExistencias);
         model.addAttribute("maxExistencias", maxExistencias);
+        return "/pruebas/listado3";
+    }
+    @PostMapping("/query5")
+    public String consultaQuery5(@RequestParam(value = "descripcion") String descripcion, Model model) {
+        var productos = productoService.findByDescripcionStartingWithIgnoreCaseOrderByDescripcionDesc(descripcion);
+        model.addAttribute("productos", productos);
+        model.addAttribute("totalProductos", productos.size());
+        model.addAttribute("descripcion", descripcion);
         return "/pruebas/listado3";
     }
 

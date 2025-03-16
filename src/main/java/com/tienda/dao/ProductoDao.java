@@ -10,7 +10,9 @@ public interface ProductoDao extends JpaRepository<Producto, Long> {
 
     public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup);
     
-    public List<Producto> findByExistenciasBetweenOrderByDescripcionDesc(int minExistencias, int maxExistencias);
+    public List<Producto> findByExistenciasLessThanEqualOrderByDescripcionDesc(int maxExistencias);
+    
+    public List<Producto> findByDescripcionStartingWithIgnoreCaseOrderByDescripcionDesc(String descripcion);
 
     //Ejemplo de método utilizando Consultas con JPQL
     @Query(value = "SELECT a FROM Producto a where a.precio BETWEEN :precioInf AND :precioSup ORDER BY a.descripcion ASC")
