@@ -155,5 +155,37 @@
                 </div>
             </div>
         </section>
+        <!-- 4 Sección para filtro existencias -->
+        <section th:fragment="filtro2" class="bg-light">
+            <div class="row py-2">
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                    <form method="POST" th:action="@{/pruebas/query4}" 
+                          class="was-validated">
+                        <div class="card">                            
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="minExistencias">[[#{pruebas.existencia.minima}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${minExistencias}"
+                                           th:name="minExistencias" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="maxExistencias">[[#{pruebas.existencia.maxima}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${maxExistencias}"
+                                           th:name="maxExistencias" required="true"/>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

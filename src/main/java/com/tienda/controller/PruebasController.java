@@ -81,4 +81,25 @@ public class PruebasController {
         model.addAttribute("precioSup", precioSup);
         return "/pruebas/listado2";
     }
+
+    //Los métodos siguientes son para la prueba de consultas ampliadas
+    @GetMapping("/listado3")
+    public String listado3(Model model) {
+        var productos = productoService.getProductos(false);
+        model.addAttribute("productos", productos);
+        model.addAttribute("totalProductos", productos.size());
+        return "/pruebas/listado3";
+    }
+
+    @PostMapping("/query4")
+    public String consultaQuery4(@RequestParam(value = "minExistencias") int minExistencias,
+            @RequestParam(value = "maxExistencias") int maxExistencias, Model model) {
+        var productos = productoService.findByExistenciasBetweenOrderByDescripcionDesc(minExistencias, maxExistencias);
+        model.addAttribute("productos", productos);
+        model.addAttribute("totalProductos", productos.size());
+        model.addAttribute("minExistencias", minExistencias);
+        model.addAttribute("maxExistencias", maxExistencias);
+        return "/pruebas/listado3";
+    }
+
 }

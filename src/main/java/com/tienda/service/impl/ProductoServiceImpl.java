@@ -48,6 +48,13 @@ public class ProductoServiceImpl implements ProductoService {
     public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup) {
         return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
     }
+    
+    // Lista de productos con precio entre ordendados por descripción ConsultaAmpliada
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> findByExistenciasBetweenOrderByDescripcionDesc(int minExistencias, int maxExistencias) {
+        return productoDao.findByExistenciasBetweenOrderByDescripcionDesc(minExistencias, maxExistencias);
+    }
 
     @Override
     @Transactional(readOnly = true)
